@@ -1,0 +1,101 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useEffect,useState } from 'react';
+
+const Navbar = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset>300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  // This function will scroll the window to the top 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // for smoothly scrolling
+    });
+  };
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            News-today
+          </Link>
+
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Home
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/business" className="nav-link">
+                  Business
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/entertainment" className="nav-link">
+                  Entertainment
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/health">
+                  Health
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/science">
+                  Science
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/sports">
+                  Sports
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/technology">
+                  Technology
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="d-flex justify-content-end sticky-top" style={{'padding':'5px'}}>
+          {showButton && ( 
+           <button onClick={scrollToTop} type="button" className="btn btn-primary btn-lg" >
+            ☝️
+           </button>
+           
+           )} 
+          </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;
