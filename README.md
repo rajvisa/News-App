@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+**## Recommends -*
+
+This news app uses API from newapi.org. highly recommend to create an API key before starting. Also this app uses developer version for the API
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
